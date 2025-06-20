@@ -1,12 +1,14 @@
 name: Daily Commit
 
+permissions:
+  contents: write  # ✅ allows pushing commits
+
 on:
   schedule:
     - cron: '25 6 * * *'  # runs daily at 06:25 UTC
   workflow_dispatch:       # <== This allows manual triggering
 
-permissions:
-  contents: write  # ✅ allows pushing commits
+
 
 jobs:
   commit:
