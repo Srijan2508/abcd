@@ -1,0 +1,21 @@
+name: Daily Commit
+
+on:
+  schedule:
+    - cron: '25 6 * * *'  # runs daily at 06:25 UTC (you can adjust this)
+
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Make daily commit - 24f1002807@ds.study.iitm.ac.in
+        run: |
+          echo "$(date)" >> daily-log.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .
+          git commit -m "Daily commit"
+          git push
